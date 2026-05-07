@@ -40,7 +40,7 @@ Keys: "A", "C", "G", "T" ( float values , %),
         "C": (sequence.count('C') / n) * 100,
         "G": (sequence.count('G') / n) * 100,
         "T": (sequence.count('T') / n) * 100,
-        "gc_ratio_A": ((sequence.count('G') + sequence.count('C')) / n) * 100
+        "gc_content": ((sequence.count('G') + sequence.count('C')) / n) * 100
     }
 
 def insert_name(sequence: str, name: str) -> str:
@@ -148,7 +148,6 @@ def main():
             format_fasta(f"{seq_id}_revcomp", f"Reverse-complementary strand of {seq_id}", final_revcomp))
 
     final_fasta_output = "\n\n".join(fasta_records)
-    final_fasta_output += "\n\n# EOF_1"
 
     file_name = f"{base_id}_batch.fasta" if num_sequences > 1 else f"{base_id}.fasta"
     with open(file_name, "w", encoding="utf-8") as f:
